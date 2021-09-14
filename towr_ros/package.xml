@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>towr_ros</name>
   <version>1.4.1</version>
   <description>
@@ -17,7 +17,11 @@
   <url type="website">http://github.com/ethz-adrl/towr</url>
   <url type="bugtracker">http://github.com/ethz-adrl/towr/issues</url>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend condition="$ROS_VERSION == 1">catkin</buildtool_depend>
+  <depend condition="$ROS_VERSION == 1">roscpp</depend>
+
+  <buildtool_depend condition="$ROS_VERSION == 2">ament_cmake</buildtool_depend>
+  <depend condition="$ROS_VERSION == 2">rclcpp</depend>
     
   <depend>libncurses-dev</depend>
   
@@ -35,4 +39,6 @@
   <exec_depend>xpp_hyq</exec_depend>
   <exec_depend>rviz</exec_depend>
   <exec_depend>rqt_bag</exec_depend>
+
+  <test_depend condition="$ROS_VERSION == 2">ament_cmake_gtest</test_depend>
 </package>
